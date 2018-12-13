@@ -1,3 +1,4 @@
+.idea/
 .git/*
 .settings/*
 target/*
@@ -18,3 +19,5 @@ target/*
 **/*.tar.gz
 **/*.rar
 **/*.pdf
+
+*.iml
