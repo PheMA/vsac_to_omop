@@ -19,12 +19,11 @@ public final class VsacToOmopPrinter {
      * @param config configuration information
      */
     public static void printConfig()  {
-        System.out.println("Umls User = " + Config.getUmlsUser());
-        System.out.println("Umls Pass = " + Config.getUmlsPass());
-        System.out.println("vs oid = " + Config.getVsOid());
-        System.out.println("vs ver = " + Config.getVsVer());
-        System.out.println("cts url = " + Config.getCts2Url());
-        System.out.println("omop base url = " + Config.getOmopBaseUrl());
+        System.out.println("UMLS User = " + Config.getUmlsUser());
+        System.out.println("Value Set OID List = " + Config.getVsOids());
+        System.out.println("Value Set Version = " + Config.getVsVer());
+        System.out.println("FHIR service URL = " + Config.getCts2Url());
+        System.out.println("OMOP base URL = " + Config.getOmopBaseUrl());
     }
     
     public static void printVSAC(CTS2Concept concept)  {

@@ -36,10 +36,16 @@ public final class Config  {
     private static String umlsPass;
 
     private static String cts2URL;
+
+    private static String fhirURL;
     
     private static String omopBaseURL;
-    
-    private static String vsOid;
+
+    private static String omopSource;
+
+    private static String omopCreate;
+
+    private static String vsOids;
     
     private static String vsName;
 
@@ -92,8 +98,11 @@ public final class Config  {
         umlsUser = getProperty("UMLS_USER");
         umlsPass = getProperty("UMLS_PASS");
         cts2URL = getProperty("CTS2_URL");
+        fhirURL = getProperty("FHIR_URL");
         omopBaseURL = getProperty("OMOP_BASE_URL");
-        vsOid = getProperty("VS_OID");
+        omopSource = getProperty("OMOP_SOURCE");
+        omopCreate = getProperty("OMOP_CREATE");
+        vsOids = getProperty("VS_OIDS");
         vsName = getProperty("VS_NAME");
         vsVer = getProperty("VS_VER");
 
@@ -108,8 +117,8 @@ public final class Config  {
         return umlsPass;
     }
 
-    public static String getVsOid() {
-        return vsOid;
+    public static String getVsOids() {
+        return vsOids;
     }
     
     public static String getVsName() {
@@ -123,10 +132,18 @@ public final class Config  {
     public static String getCts2Url() {
         return cts2URL;
     }
+
+    public static String getFhirUrl() {
+        return fhirURL;
+    }
     
     public static String getOmopBaseUrl() {
         return omopBaseURL;
     }
+
+    public static String getOmopSource() { return omopSource; }
+
+    public static String getOmopCreate() { return omopCreate; }
     
     /**
      * Sets the values for the property.
@@ -145,16 +162,22 @@ public final class Config  {
             umlsUser = val;
         } else if (prop.equalsIgnoreCase("UMLS_PASS"))  {
             umlsPass = val;
-        } else if (prop.equalsIgnoreCase("VS_OID"))  {
-            vsOid = val;
+        } else if (prop.equalsIgnoreCase("VS_OIDS"))  {
+            vsOids = val;
         } else if (prop.equalsIgnoreCase("VS_NAME"))  {
             vsName = val;
         } else if (prop.equalsIgnoreCase("VS_VER"))  {
             vsVer = val;
         } else if (prop.equalsIgnoreCase("CTS2_URL"))  {
             cts2URL = val;
+        } else if (prop.equalsIgnoreCase("FHIR_URL"))  {
+            fhirURL = val;
         } else if (prop.equalsIgnoreCase("OMOP_BASE_URL"))  {
             omopBaseURL = val;
+        } else if (prop.equalsIgnoreCase("OMOP_SOURCE"))  {
+            omopSource = val;
+        } else if (prop.equalsIgnoreCase("OMOP_CREATE"))  {
+            omopCreate = val;
         }
 
     }
@@ -169,17 +192,23 @@ public final class Config  {
         if (umlsPass == null)  {
             LOGGER.severe("ERROR - missing parameter UMLS_PASS");
         }
-        if (vsOid == null)  {
-            LOGGER.severe("ERROR - missing parameter VS_OID");
+        if (vsOids == null)  {
+            LOGGER.severe("ERROR - missing parameter VS_OIDS");
         }
         if (vsName == null)  {
-            LOGGER.severe("ERROR - missing parameter VS_NAME");
+            LOGGER.warning("WARN - missing parameter VS_NAME");
         }
-        if (cts2URL == null)  {
-            LOGGER.severe("ERROR - missing parameter CTS2_URL");
+        if (cts2URL == null && fhirURL == null)  {
+            LOGGER.severe("ERROR - missing parameter CTS2_URL or FHIR_URL");
         }
         if (omopBaseURL == null)  {
             LOGGER.severe("ERROR - missing parameter OMOP_BASE_URL");
+        }
+        if (omopSource == null)  {
+            LOGGER.severe("ERROR - missing parameter OMOP_SOURCE");
+        }
+        if (omopCreate == null)  {
+            LOGGER.severe("ERROR - missing parameter OMOP_CREATE");
         }
        
     }
