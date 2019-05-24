@@ -1,5 +1,8 @@
-This is really old code in unknown state.  
+# VSAC to OMOP
 
-It used to use CTS2 services to access VSAC and retrieve a value set based on an oid set in the configuration file.
-The codes in the value set would then be compared to an existing OMOP repository to be sure they are all present
-OMOP concept sets would then be created for each of the value sets.
+This is a command-line utility that takes a Value Set Authority Center (VSAC) OID for a particular value set, and using the NLM's FHIR API, retrieves the value set definition including codes.  It then communicates using the OHDSI WebAPI to create the value set (as a concept set) and populate it with all codes that it is able to find.
+
+## Building
+Written in Java, and uses Maven for package dependencies.  Build the system from the command line using:
+
+`mvn clean package`
